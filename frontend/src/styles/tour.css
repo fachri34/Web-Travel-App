@@ -1,3 +1,16 @@
+.size{
+    cursor: pointer;
+    font-size: xx-large;
+}
+
+span:hover{
+    text-decoration: underline;
+    color: orange;
+}
+
+.pict{
+    margin-left: 30px;
+}
 .pagination span {
     width: 2rem;
     height: 2rem;
