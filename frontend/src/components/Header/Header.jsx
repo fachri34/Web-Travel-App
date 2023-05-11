@@ -71,7 +71,7 @@ const Header = () => {
               <div className='nav__btns d-flex align-items-center gap-4'>
                 {user ? (
                   <>
-                    <h5 className='mb-0'>Hi, {user.username}</h5>
+                    <h5 className='mb-0'>Hi, {user.username} mwahhhh</h5>
                     <Button className='btn btn-danger' onClick={logout}>
                       Logout
                     </Button>
