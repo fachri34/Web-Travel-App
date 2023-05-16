@@ -4,7 +4,7 @@ import { createTour, deleteTour, getAllTour, getSingleTour, updateTour, getTourB
 
 const router = express.Router()
 
-router.post("/", createTour)
+router.post("/", verifyAdmin, createTour)
 router.put("/:id", verifyAdmin, updateTour)
 router.delete("/:id", verifyAdmin, deleteTour)
 router.get("/:id", getSingleTour)

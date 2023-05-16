@@ -64,7 +64,7 @@ export const getSingleTour = async (req, res) => {
     const id = req.params.id
 
     try {
-        const tour = await Tour.findById(id);
+        const tour = await Tour.findById(id).populate("reviews")
         res.status(200).json({
             success: true,
             message: "Successful",
@@ -84,8 +84,10 @@ export const getAllTour = async (req, res) => {
     const page = parseInt(req.query.page)
 
     try {
-        const tours = await Tour.find({}).skip(page * 8).limit(8)
-        // .populate('reviews')
+        const tours = await Tour.find({})
+        .populate("reviews")
+        .skip(page * 8)
+        .limit(8)
 
         res.status(200).json({
             success: true,
@@ -96,7 +98,7 @@ export const getAllTour = async (req, res) => {
     } catch (err) {
         res.status(404).json({
             success: false,
-            message: "Not Found",
+            message: err.message,
         })
     }
 }

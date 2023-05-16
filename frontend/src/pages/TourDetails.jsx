@@ -14,6 +14,8 @@ const TourDetail = () => {
 
   const { id } = useParams()
 
+  const [counter,setCounter] = useState(0)
+
   const reviewMsgRef = useRef(' ')
 
   const [tourRating, setTourRating] = useState(null)
@@ -65,6 +67,13 @@ const TourDetail = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0)
+    const interval = setInterval(() => {
+      setCounter(prevCounter => prevCounter + 1);
+    }, 500);
+
+    return () => {
+      clearInterval(interval);
+    };
   }, [tour])
   return (
     <>
@@ -154,10 +163,11 @@ const TourDetail = () => {
                             <div className='d-flex align-items-center justify-content-between'>
                               <div>
                                 <h5>{review.username}</h5>
-                                <p>{new Date(review.cratedAt).toLocaleDateString('en-US', options)}</p>
+                                <p>{new Date(review.createdAt).toLocaleDateString('en-US', options)}</p>
                               </div>
                               <span className='d-flex align-items-center'>
-                                {review.rating}<i className='ri-star-s-fill'></i>
+                                {review.rating}
+                                <i className='ri-star-s-fill'></i>
                               </span>
                             </div>
                             <h6>{review.reviewText}</h6>
